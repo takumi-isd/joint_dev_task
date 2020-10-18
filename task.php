@@ -32,7 +32,7 @@ echo PHP_EOL;
   $array1 = ["dog", "cat", "fish"];
   $array2 = ["bird", "bat", "tiger"];
   $array_merge = array_merge($array1,$array2);
-print_r($array_merge);
+  print_r($array_merge);
 ?>
 
 print("#####q3#####".PHP_EOL);
@@ -50,6 +50,14 @@ print("#####q4#####".PHP_EOL);
 $sports = ["サッカー", "フットサル", null, "野球", "バスケ", null, "バレー"];
 
   # 以下に回答を記載
+<?php
+  $sports = ["サッカー", "フットサル", null, "野球", "バスケ", null, "バレー"];
+  $sports = array("サッカー", "フットサル", null, "野球", "バスケ", null, "バレー");
+  unset($sports[2]);
+  unset($sports[5]);
+  $sports = array_values($sports);
+  print_r($sports);
+?>
 
 echo PHP_EOL;
 
@@ -58,6 +66,24 @@ $array1 = [];
 $array2 = [1, 5, 8, 10];
 
   # 以下に回答を記載
+<?php
+    $array1 = [];
+    if(empty($array1)){
+        echo "ture";
+    }else{
+        echo "false";
+    }
+
+    echo PHP_EOL;
+
+    $array2 = [1,5,8,10];
+    if(empty($array2)){
+        echo "true";
+    }else{
+        echo "false";
+    }
+
+?>
 
 echo PHP_EOL;
 
@@ -65,20 +91,70 @@ print("#####q6#####".PHP_EOL);
 $numbers1 = [1, 2, 3, 4, 5];
 
   # 以下に回答を記載
+//回答を２つ書いてみました。
+<?php
+    class sample{
+        function answer( $num ){
+            return $num * 10;
+        }
+    }
+    
+    $varnumners = array(1, 2, 3, 4, 5);
+    $varnumners2 = array_map(array("sample", "answer"), $varnumners);
+    print_r($varnumners2);
+?>
 
 echo PHP_EOL;
+
+<?php
+    function index($n)
+    {
+        return ($n * 10);
+    }
+
+    $a = [1, 2, 3, 4, 5];
+    $b = array_map('index', $a);
+    print_r($b);
+?>
 
 print("#####q7#####".PHP_EOL);
 $array = ["1", "2", "3", "4", "5"];
 
   # 以下に回答を記載
+//回答を２つ書いてみました。
+<?php
+   $array = ["1", "2", "3", "4", "5"];
+   foreach($array as $key => $value){
+       $array_key[] = $key;
+       $array_val[] = $value;
+   }
+   print_r($array);
+?>
 
 echo PHP_EOL;
+
+<?php
+    $array = ["1", "2", "3", "4", "5"];
+    $array = array_map('intval', $array);
+    print_r($array);
+?>
 
 print("#####q8#####".PHP_EOL);
 $programming_languages = ["php","ruby","python","javascript"];
 
   # 以下に回答を記載
+<?php
+    $programming_languages = ["php","ruby","python","javascript"];
+    $programming_languages = array_map('ucfirst',$programming_languages);
+    // print_r("頭だけ大文字");
+    echo PHP_EOL;
+    print_r($programming_languages);
+    echo PHP_EOL;
+    $upper_case_programming_languages = array_map('strtoupper',$programming_languages);
+    // print_r("全部大文字");
+    echo PHP_EOL;
+    print_r($upper_case_programming_languages);
+?>
 
   # 以下は変更しないで下さい
 print_r($programming_languages);
@@ -91,6 +167,16 @@ print("#####q9#####".PHP_EOL);
 $names = ["田中", "佐藤", "佐々木", "高橋"];
 
   # 以下に回答を記載
+<?php
+    $names = ["田中", "佐藤", "佐々木", "高橋"];
+    $names2 = [];
+    foreach($names as $key => $value){
+       $num = $key + 1;
+       $name = "会員No.".$num." ".$value;
+       array_push($names2,$name);
+    }
+    print_r($names2);
+?>
 
 echo PHP_EOL;
 
@@ -98,6 +184,16 @@ print("#####q10#####".PHP_EOL);
 $foods = ["いか","たこ","うに","しゃけ","うにぎり","うに軍艦","うに丼"];
 
   # 以下に回答を記載
+<?php
+    $foods = ["いか","たこ","うに","しゃけ","うにぎり","うに軍艦","うに丼"];
+    foreach($foods as $food){
+        if(preg_match("/うに/",$food)){
+            echo "好物です。/";
+        }else{
+            echo "まあまあ好きです。/";
+        }
+    }
+?>
 
 echo PHP_EOL;
 
@@ -105,6 +201,39 @@ print("#####q11#####".PHP_EOL);
 $sports = ["サッカー", "バスケ", "野球", ["フットサル", "野球"], "水泳", "ハンドボール", ["卓球", "サッカー", "ボルダリング"]];
 
   # 以下に回答を記載
+ <?php
+    echo "ユーザーの趣味一覧";
+    echo PHP_EOL;
+    $sports = ["サッカー", "バスケ", "野球", ["フットサル", "野球"], "水泳", "ハンドボール", 
+    ["卓球", "サッカー", "ボルダリング"]];
+    $sports1 = [];
+    foreach($sports as $key => $sport){
+        if(is_array($sport)){
+            // is_array : 指定した値が配列か否かを確認する
+            $sports1 = array_merge($sports1,$sport);
+            // 
+        }else{
+            array_push($sports1,$sport);
+            // 
+        }
+    }
+
+    $sports1 = array_unique($sports1);
+    // array_unique : 配列から重複した値を削除する
+    $sports1 = array_values($sports1);
+    // array_values : 配列の全ての値を返す
+
+    $sports2 = [];
+    foreach($sports1 as $key => $sport){
+        $num = $key + 1;
+        $sport2 = "No.".$num." ".$sport;
+        array_push($sports2,$sport2);
+    }
+
+    foreach($sports2 as $sport){
+        print_r($sport.PHP_EOL);
+    }
+ ?>
 
 echo PHP_EOL;
 
