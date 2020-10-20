@@ -241,6 +241,9 @@ print("#####q12#####".PHP_EOL);
 $data = [ "user" => [ "name" => "satou", "age" => 33 ] ];
 
   # 以下に回答を記載
+<?php
+
+?>
 
 echo PHP_EOL;
 
