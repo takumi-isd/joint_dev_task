@@ -9,9 +9,7 @@ $names = ["田中", "佐藤", "佐々木", "高橋"];
   $names = ["田中", "佐藤", "佐々木", "高橋"];
   array_push($names,"斎藤");
   print_r($names);
-?>  
-
-secho PHP_EOL;
+?> 
 
 
 print("#####q2#####".PHP_EOL);
@@ -19,13 +17,13 @@ $array1 = ["dog", "cat", "fish"];
 $array2 = ["bird", "bat", "tiger"];
 
   # 以下に回答を記載
-  
 //回答を２つ書いてみました。
 <?php
   $array1 = ["dog", "cat", "fish"];
   $array2 = ["bird", "bat", "tiger"];
   print_r(array_merge($array1,$array2));
 ?>
+
 echo PHP_EOL;
 
 <?php
