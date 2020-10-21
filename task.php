@@ -54,6 +54,7 @@ $sports = ["サッカー", "フットサル", null, "野球", "バスケ", null,
   unset($sports[2]);
   unset($sports[5]);
   $sports = array_values($sports);
+  // $sports = array_diff($sports,[null]); => このやり方だと、nullの位置が変わっても適用できる
   print_r($sports);
 ?>
 
@@ -67,7 +68,7 @@ $array2 = [1, 5, 8, 10];
 <?php
     $array1 = [];
     if(empty($array1)){
-        echo "ture";
+        echo "true";
     }else{
         echo "false";
     }
@@ -240,7 +241,8 @@ $data = [ "user" => [ "name" => "satou", "age" => 33 ] ];
 
   # 以下に回答を記載
 <?php
-
+    $data = [ "user" => [ "name" => "satou", "age" => 33 ] ];
+    print_r($data["user"]["name"]);
 ?>
 
 echo PHP_EOL;
@@ -250,6 +252,12 @@ $user_data = [ "name" => "神里", "age" => 31, "address" => "埼玉"];
 $update_data = [ "age" => 32, "address" => "沖縄" ];
 
   # 以下に回答を記載
+<?php
+    $user_data = [ "name" => "神里", "age" => 31, "address" => "埼玉"];
+    $update_data = [ "age" => 32, "address" => "沖縄" ];
+    $result = array_merge($user_data,$update_data);
+    print_r($result);
+?>
 
 echo PHP_EOL;
 
@@ -257,6 +265,18 @@ print("#####q14#####".PHP_EOL);
 $data = [ "name" => "satou", "age" => 33, "address" => "saitama", "hobby" => "soccer", "email" => "hoge@fuga.com" ];
 
   # 以下に回答を記載
+<?php
+    $data = [ "name" => "satou", "age" => 33, "address" => "saitama", 
+    "hobby" => "soccer", "email" => "hoge@fuga.com" ];
+
+    // // 連想配列のkeyを出力
+    $keys = array_keys($data);
+    print_r($keys);
+
+    // 連想配列のvalueを出力
+    $values = array_values($data);
+    print_r($values);
+?>
 
 echo PHP_EOL;
 
@@ -265,6 +285,25 @@ $data1 = [ "name" => "saitou", "hobby" => "soccer", "age" => 33, "role" => "admi
 $data2 = [ "name" => "yamada", "hobby" => "baseball", "role" => "normal" ];
 
   # 以下に回答を記載
+<?php
+   $data1 = [ "name" => "saitou", "hobby" => "soccer", "age" => 33, "role" => "admin" ]; 
+   $data2 = [ "name" => "yamada", "hobby" => "baseball", "role" => "normal" ];
+
+    // isset : 配列にキーが存在しているかチェック
+    if(isset($data1["age"])){
+        echo "OK";
+    }else{
+        echo "NG";
+    }
+
+    echo PHP_EOL;
+
+    if(isset($data2["age"])){
+        echo "OK";
+    }else{
+        echo "NG";
+    }
+?>
 
 echo PHP_EOL;
 
@@ -277,6 +316,18 @@ $users = [
 ];
 
   # 以下に回答を記載
+<?php
+  $users = [
+    [ "name" => "satou", "age" => 22 ],
+    [ "name" => "yamada", "age" => 12 ],
+    [ "name" => "takahashi", "age" => 32 ],
+    [ "name" => "nakamura", "age" => 41 ]
+  ];
+  
+  foreach($users as $key => $value){
+      echo "私の名前は".$value["name"]."です。年齢は".$value["age"]."歳です。".PHP_EOL;
+  }
+?>
 
 echo PHP_EOL;
 
