@@ -270,8 +270,8 @@ $data = [ "name" => "satou", "age" => 33, "address" => "saitama", "hobby" => "so
     "hobby" => "soccer", "email" => "hoge@fuga.com" ];
 
     // // 連想配列のkeyを出力
-    $keys = array_keys($data);
-    print_r($keys);
+    // $keys = array_keys($data);
+    // print_r($keys);
 
     // 連想配列のvalueを出力
     $values = array_values($data);
